@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDYX1kwciy-zFM8kHesMeaztV9BUFvN0tQ",
+            authDomain: "saylani-web-and-mobile-ee244.firebaseapp.com",
+            databaseURL: "https://saylani-web-and-mobile-ee244.firebaseio.com",
+            projectId: "saylani-web-and-mobile-ee244",
+            storageBucket: "saylani-web-and-mobile-ee244.appspot.com",
+            messagingSenderId: "1018280107671",
+            appId: "1:1018280107671:web:a62b896af1a2369fa8d3d2",
+            measurementId: "G-NZPWL0PET7"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+</head>
+
+<body>
+
+    <div class="Form">
+        <input type="email" placeholder="Enter Email" id="email">
+        <br></br>
+        <input type="password" placeholder="Enter Password" id="password">
+        <br></br>
+        <button onclick="signup()">Sign Up</button>
+    </div>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+    <div class="Form">
+        <input type="email" placeholder="Enter Email" id="login-email">
+        <br></br>
+        <input type="password" placeholder="Enter Password" id="login-password">
+        <br></br>
+        <button onclick="login()">Login In</button>
+    </div>
+
+
+    <script>
+
+        let signup = () => {
+
+            let email = document.getElementById("email")
+            let password = document.getElementById("password")
+
+
+            firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+                .then((result) => {
+                    console.log(result)
+
+                })
+                .catch(function (error) {
+
+
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage)
+                    // ...
+                });
+        }
+
+    </script>
+   
+
+
+    <script>
+
+    
+        let login = () => {
+            let email = document.getElementById("login-email")
+            let password = document.getElementById("login-password")
+
+            firebase.auth().signInWithEmailAndPassword(email.value,  password.value)
+
+            .then((result) => {
+                    console.log("new login users")
+                    console.log(result)
+
+                })
+
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage)
+                // ...
+            });
+        };
+
+    </script>
+
+    <script src="app.js">
+
+    </script>
+
+
+</body>
+
+</html>
